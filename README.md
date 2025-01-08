@@ -1,50 +1,79 @@
-# Welcome to your Expo app 👋
+# 🌱 Gruenerator App Mobile
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+[![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactnative.dev/)
+[![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)](https://expo.dev/)
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-## Get started
+Eine moderne mobile App für Android und iOS, die verschiedene Grueneratoren für die tägliche politische Arbeit bereitstellt. Entwickelt mit React Native und Expo.
 
-1. Install dependencies
+## 🚀 Features
 
-   ```bash
-   npm install
-   ```
+| Generator | Beschreibung |
+|-----------|-------------|
+| 📝 Antragsgenerator | Erstelle professionelle Anträge |
+| 🧭 BTW-Kompass | Navigiere durch Bundestagswahlen |
+| 📰 Pressemitteilungsgenerator | Generiere druckreife Pressemitteilungen |
+| 📋 Programmgenerator | Erstelle Wahlprogramme und Positionspapiere |
+| 🎤 Redegenerator | Generiere überzeugende Reden |
+| 🖼️ Sharepic-Generator | Erstelle teilbare Social Media Grafiken |
+| 📱 Social Media Generator | Optimiere deine Social Media Präsenz |
+| 🔄 Universal Generator | Flexibler Generator für verschiedene Zwecke |
 
-2. Start the app
+## 🛠️ Technologie-Stack
 
-   ```bash
-    npx expo start
-   ```
+- **Frontend Framework**: React Native / Expo
+- **Navigation**: React Navigation (Drawer)
+- **UI Components**: Native Base
+- **Content Delivery**: WebView Integration
+- **State Management**: React Context API
+- **Styling**: Custom Theme System
 
-In the output, you'll find options to open the app in a
+## 📦 Installation
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
+Stelle sicher, dass Node.js (>= 14.0.0) und npm installiert sind.
 
 ```bash
-npm run reset-project
+# Repository klonen
+git clone https://github.com/Movm/gruenerator_app_android_ios.git
+
+# In Projektverzeichnis wechseln
+cd gruenerator_app_android_ios
+
+# Abhängigkeiten installieren
+npm install
+
+# App starten
+npx expo start
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## 🔧 Entwicklung
 
-## Learn more
+Die App basiert auf einer modularen Architektur mit Drawer-Navigation. Jeder Generator wird in einem optimierten WebView geladen.
 
-To learn more about developing your project with Expo, look at the following resources:
+### 📁 Projektstruktur
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+```
+gruenerator_app_android_ios/
+├── app/                # Hauptanwendungscode und Routing
+├── assets/            # Statische Assets (Fonts, Bilder)
+├── components/        # Wiederverwendbare UI-Komponenten
+├── config/           # Konfigurationsdateien
+└── constants/        # App-Konstanten und Hooks
+```
 
-## Join the community
+## 🤝 Mitwirken
 
-Join our community of developers creating universal apps.
+Beiträge sind willkommen! Bitte lies dir unsere Beitragsrichtlinien durch:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+1. Fork das Projekt
+2. Erstelle einen Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Committe deine Änderungen (`git commit -m 'Add: Amazing Feature'`)
+4. Push zum Branch (`git push origin feature/AmazingFeature`)
+5. Öffne einen Pull Request
+
+## 📄 Lizenz
+
+Dieses Projekt ist unter der MIT-Lizenz lizenziert - siehe die [LICENSE](LICENSE) Datei für Details.
+
+---
+Entwickelt mit 💚 für die grüne Community
