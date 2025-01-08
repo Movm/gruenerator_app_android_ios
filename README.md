@@ -4,29 +4,22 @@
 [![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)](https://expo.dev/)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-Eine moderne mobile App für Android und iOS, die verschiedene Grueneratoren für die tägliche politische Arbeit bereitstellt. Entwickelt mit React Native und Expo.
+Eine mobile App für Android und iOS, die als WebView-Container für die Gruenerator-Plattform dient. Die App ermöglicht den mobilen Zugriff auf verschiedene Grueneratoren für die tägliche politische Arbeit.
 
 ## 🚀 Features
 
-| Generator | Beschreibung |
-|-----------|-------------|
-| 📝 Antragsgenerator | Erstelle professionelle Anträge |
-| 🧭 BTW-Kompass | Navigiere durch Bundestagswahlen |
-| 📰 Pressemitteilungsgenerator | Generiere druckreife Pressemitteilungen |
-| 📋 Programmgenerator | Erstelle Wahlprogramme und Positionspapiere |
-| 🎤 Redegenerator | Generiere überzeugende Reden |
-| 🖼️ Sharepic-Generator | Erstelle teilbare Social Media Grafiken |
-| 📱 Social Media Generator | Optimiere deine Social Media Präsenz |
-| 🔄 Universal Generator | Flexibler Generator für verschiedene Zwecke |
+- 📱 Optimierte mobile Ansicht der Gruenerator-Plattform
+- 🔄 Nahtlose Integration aller Grueneratoren
+- 📲 Native App-Experience durch React Native
+- 🎯 Offline-Fähigkeit für wichtige Funktionen
+- 🔐 Sichere WebView-Integration
 
 ## 🛠️ Technologie-Stack
 
 - **Frontend Framework**: React Native / Expo
 - **Navigation**: React Navigation (Drawer)
-- **UI Components**: Native Base
 - **Content Delivery**: WebView Integration
 - **State Management**: React Context API
-- **Styling**: Custom Theme System
 
 ## 📦 Installation
 
@@ -48,16 +41,16 @@ npx expo start
 
 ## 🔧 Entwicklung
 
-Die App basiert auf einer modularen Architektur mit Drawer-Navigation. Jeder Generator wird in einem optimierten WebView geladen.
+Die App nutzt eine WebView-basierte Architektur mit Drawer-Navigation für optimalen Zugriff auf die Gruenerator-Plattform.
 
 ### 📁 Projektstruktur
 
 ```
 gruenerator_app_android_ios/
-├── app/                # Hauptanwendungscode und Routing
+├── app/                # Hauptanwendungscode und WebView-Integration
 ├── assets/            # Statische Assets (Fonts, Bilder)
 ├── components/        # Wiederverwendbare UI-Komponenten
-├── config/           # Konfigurationsdateien
+├── config/           # WebView- und App-Konfiguration
 └── constants/        # App-Konstanten und Hooks
 ```
 
