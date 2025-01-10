@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView, Dimensions, useColorScheme } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { menuItems } from '../config/menuItems';
 
 const windowWidth = Dimensions.get('window').width;
@@ -97,11 +96,6 @@ export default function Home() {
     router.push(route);
   };
 
-  const resetOnboarding = async () => {
-    await AsyncStorage.removeItem('hasSeenOnboarding');
-    router.replace('/onboarding');
-  };
-
   return (
     <ScrollView style={styles.container} contentContainerStyle={styles.scrollContent}>
       <View style={styles.menuGrid}>
@@ -115,16 +109,6 @@ export default function Home() {
             <Text style={styles.menuText}>{item.shortTitle || item.title}</Text>
           </TouchableOpacity>
         ))}
-
-        {__DEV__ && (
-          <TouchableOpacity 
-            style={[styles.menuItem, { backgroundColor: '#ff4444' }]}
-            onPress={resetOnboarding}
-          >
-            <MaterialCommunityIcons name="refresh" size={iconSize} style={[styles.icon, { color: '#ffffff' }]} />
-            <Text style={[styles.menuText, { color: '#ffffff' }]}>Reset Onboarding</Text>
-          </TouchableOpacity>
-        )}
       </View>
     </ScrollView>
   );

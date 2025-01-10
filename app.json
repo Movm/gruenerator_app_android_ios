@@ -5,12 +5,18 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "scheme": "gruenerator",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
+    "newArchEnabled": false,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "de.gruenerator.app"
+      "bundleIdentifier": "de.gruenerator.app",
+      "jsEngine": "jsc"
     },
     "android": {
       "adaptiveIcon": {
@@ -19,7 +25,8 @@
       },
       "package": "de.gruenerator.app",
       "versionCode": 1,
-      "permissions": []
+      "permissions": [],
+      "jsEngine": "jsc"
     },
     "web": {
       "bundler": "metro",
@@ -28,15 +35,6 @@
     },
     "plugins": [
       "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
-        }
-      ],
       "expo-font"
     ],
     "experiments": {
