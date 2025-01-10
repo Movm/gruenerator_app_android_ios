@@ -11,8 +11,7 @@ Eine mobile App für Android und iOS, die als WebView-Container für die Gruener
 - 📱 Optimierte mobile Ansicht der Gruenerator-Plattform
 - 🔄 Nahtlose Integration aller Grueneratoren
 - 📲 Native App-Experience durch React Native
-- 🎯 Offline-Fähigkeit für wichtige Funktionen
-- 🔐 Sichere WebView-Integration
+- 🎯 Sichere WebView-Integration
 
 ## 🛠️ Technologie-Stack
 
