@@ -83,5 +83,14 @@ export const menuItems = [
       name: 'vote',
       component: MaterialCommunityIcons
     }
+  },
+  {
+    id: 'video',
+    title: 'Video Editor',
+    route: '/video-editor',
+    icon: {
+      name: 'video-outline',
+      component: MaterialCommunityIcons
+    }
   }
 ]; 
