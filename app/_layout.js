@@ -1,5 +1,5 @@
 import { Drawer } from 'expo-router/drawer';
-import { useColorScheme } from 'react-native';
+import { useColorScheme, StatusBar } from 'react-native';
 import CustomDrawerContent from './CustomDrawerContent';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useFonts } from 'expo-font';
@@ -41,6 +41,11 @@ export default function Layout() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
+      <StatusBar
+        barStyle={isDark ? 'light-content' : 'dark-content'}
+        backgroundColor={theme.header}
+        translucent={true}
+      />
       <Drawer
         screenOptions={{
           headerStyle: {
