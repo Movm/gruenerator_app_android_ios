@@ -131,6 +131,13 @@ export default function Layout() {
             title: 'Wahlprüfstein BTW'
           }}
         />
+        <Drawer.Screen 
+          name="grueneratoren/video-editor" 
+          options={{
+            drawerLabel: 'Video Editor',
+            title: 'Video Editor'
+          }}
+        />
       </Drawer>
     </GestureHandlerRootView>
   );
