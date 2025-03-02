@@ -4,7 +4,7 @@ import { ScrollContext } from '../context/ScrollContext';
 import FocusButton from '../components/FocusButton';
 import SafeWebView from '../components/SafeWebView';
 
-export default function ReelScreen() {
+export default function SucheScreen() {
   const { isScrolled, setIsScrolled } = useContext(ScrollContext);
 
   const toggleFocus = () => {
@@ -13,7 +13,7 @@ export default function ReelScreen() {
 
   return (
     <View style={styles.container}>
-      <SafeWebView url="https://beta.gruenerator.de/reel-no-header-footer" />
+      <SafeWebView url="https://beta.gruenerator.de/suche-no-header-footer" />
       <FocusButton 
         isScrolled={isScrolled}
         onPress={toggleFocus}

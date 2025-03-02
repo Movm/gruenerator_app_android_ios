@@ -3,28 +3,20 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 export const menuItems = [
   {
     id: 'social',
-    title: 'Social Media',
+    title: 'Presse & Social-Media',
+    shortTitle: 'Presse & Social',
+    description: 'Pressemitteilungen und Social-Media-Posts',
     route: '/grueneratoren/social',
-    webUrl: 'https://beta.gruenerator.de/social',
+    webUrl: 'https://beta.gruenerator.de/presse-social',
     icon: {
       name: 'message-text-outline',
       component: MaterialCommunityIcons
     }
   },
   {
-    id: 'press',
-    title: 'Pressemitteilungen',
-    shortTitle: 'Presse',
-    route: '/grueneratoren/pressemitteilung',
-    webUrl: 'https://beta.gruenerator.de/pressemitteilung',
-    icon: {
-      name: 'newspaper-variant-outline',
-      component: MaterialCommunityIcons
-    }
-  },
-  {
     id: 'motions',
     title: 'Anträge',
+    description: 'Anträge für Kommunalparlamente & Co.',
     route: '/grueneratoren/antrag',
     webUrl: 'https://beta.gruenerator.de/antrag',
     icon: {
@@ -35,6 +27,7 @@ export const menuItems = [
   {
     id: 'universal',
     title: 'Universal',
+    description: 'Wahlprogramme, Reden oder freie Textformen',
     route: '/grueneratoren/universal',
     webUrl: 'https://beta.gruenerator.de/universal',
     icon: {
@@ -42,30 +35,11 @@ export const menuItems = [
       component: MaterialCommunityIcons
     }
   },
-  {
-    id: 'speech',
-    title: 'Politische Rede',
-    route: '/grueneratoren/rede',
-    webUrl: 'https://beta.gruenerator.de/rede',
-    icon: {
-      name: 'microphone-outline',
-      component: MaterialCommunityIcons
-    }
-  },
-  {
-    id: 'program',
-    title: 'Wahlprogramm',
-    route: '/grueneratoren/programm',
-    webUrl: 'https://beta.gruenerator.de/programm',
-    icon: {
-      name: 'book-outline',
-      component: MaterialCommunityIcons
-    }
-  },
-  {
+  /* {
     id: 'sharepic',
     title: 'Sharepic Generator',
     shortTitle: 'Sharepic',
+    description: 'Erstelle ansprechende Bilder für Social Media im grünen Corporate Design.',
     route: '/grueneratoren/sharepic',
     webUrl: 'https://beta.gruenerator.de/sharepic',
     icon: {
@@ -74,22 +48,26 @@ export const menuItems = [
     }
   },
   {
-    id: 'compass',
-    title: 'Wahlprüfstein BTW',
-    shortTitle: 'Kompass BTW',
-    route: '/grueneratoren/btw-kompass',
-    webUrl: 'https://beta.gruenerator.de/btw-kompass',
+    id: 'vorlagen',
+    title: 'Canva Vorlagen',
+    shortTitle: 'Vorlagen',
+    description: 'Zugriff auf professionelle Canva-Vorlagen im grünen Design.',
+    route: '/grueneratoren/vorlagen',
+    webUrl: 'https://beta.gruenerator.de/vorlagen',
     icon: {
-      name: 'vote',
+      name: 'palette-outline',
       component: MaterialCommunityIcons
     }
-  },
+  }, */
   {
-    id: 'video',
-    title: 'Video Editor',
-    route: '/video-editor',
+    id: 'gjugend',
+    title: 'Grüne Jugend',
+    shortTitle: 'Grüne Jugend',
+    description: 'Der Grünerator in jung',
+    route: '/grueneratoren/gj',
+    webUrl: 'https://beta.gruenerator.de/gruene-jugend-no-header-footer',
     icon: {
-      name: 'video-outline',
+      name: 'sprout',
       component: MaterialCommunityIcons
     }
   }

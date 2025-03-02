@@ -6,7 +6,7 @@ export default function SocialScreen() {
   return (
     <View style={styles.container}>
       <WebView
-        source={{ uri: 'https://beta.gruenerator.de/socialmedia-no-header-footer' }}
+        source={{ uri: 'https://beta.gruenerator.de/presse-social-no-header-footer' }}
         style={styles.webview}
         cacheEnabled={true}
         domStorageEnabled={true}

@@ -1,13 +1,16 @@
-import { Drawer } from 'expo-router/drawer';
-import { useColorScheme, StatusBar } from 'react-native';
-import CustomDrawerContent from './CustomDrawerContent';
+import { Stack } from 'expo-router';
+import { useColorScheme, Animated, KeyboardAvoidingView, Platform } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useFonts } from 'expo-font';
 import { SplashScreen } from 'expo-router';
-import { useEffect } from 'react';
+import { useEffect, useContext } from 'react';
+import { ScrollContextProvider, ScrollContext } from './context/ScrollContext';
+import { KeyboardContextProvider } from './context/KeyboardContext';
 
-export default function Layout() {
+function StackNavigator() {
   const isDark = useColorScheme() === 'dark';
+  const { isScrolled } = useContext(ScrollContext);
+
   const colors = {
     light: {
       header: '#ffffff',
@@ -21,6 +24,37 @@ export default function Layout() {
 
   const theme = isDark ? colors.dark : colors.light;
 
+  return (
+    <Stack
+      screenOptions={{
+        animation: 'none',
+      }}
+    >
+      <Stack.Screen 
+        name="(tabs)" 
+        options={{ 
+          headerShown: !isScrolled,
+          title: "Grünerator",
+          headerStyle: {
+            backgroundColor: theme.header,
+            height: 80,
+          },
+          headerTitleStyle: {
+            fontFamily: 'GrueneType',
+            fontSize: 24,
+            color: theme.text,
+          },
+          headerTitleContainerStyle: {
+            left: 24,
+          },
+          headerShadowVisible: false,
+        }}
+      />
+    </Stack>
+  );
+}
+
+export default function Layout() {
   const [fontsLoaded] = useFonts({
     'PTSans': require('../assets/fonts/PTSans-Regular.ttf'),
     'PTSans-Bold': require('../assets/fonts/PTSans-Bold.ttf'),
@@ -40,105 +74,18 @@ export default function Layout() {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <StatusBar
-        barStyle={isDark ? 'light-content' : 'dark-content'}
-        backgroundColor={theme.header}
-        translucent={true}
-      />
-      <Drawer
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: theme.header,
-            elevation: 0,
-            shadowOpacity: 0,
-          },
-          headerTintColor: theme.text,
-          drawerStyle: {
-            width: 280,
-            backgroundColor: theme.header,
-          },
-          headerShown: true,
-          headerTitle: 'Grünerator',
-          headerTitleStyle: {
-            fontFamily: 'GrueneType',
-            fontSize: 24,
-            color: theme.text,
-          }
-        }}
-        drawerContent={(props) => <CustomDrawerContent {...props} isDark={isDark} />}
-      >
-        <Drawer.Screen 
-          name="index" 
-          options={{
-            drawerLabel: 'Home',
-            headerTitle: 'Grünerator'
-          }}
-        />
-        <Drawer.Screen 
-          name="grueneratoren/social" 
-          options={{
-            drawerLabel: 'Social Media',
-            title: 'Social Media'
-          }}
-        />
-        <Drawer.Screen 
-          name="grueneratoren/pressemitteilung" 
-          options={{
-            drawerLabel: 'Pressemitteilungen',
-            title: 'Pressemitteilungen'
-          }}
-        />
-        <Drawer.Screen 
-          name="grueneratoren/antrag" 
-          options={{
-            drawerLabel: 'Anträge',
-            title: 'Anträge'
-          }}
-        />
-        <Drawer.Screen 
-          name="grueneratoren/universal" 
-          options={{
-            drawerLabel: 'Universal',
-            title: 'Universal'
-          }}
-        />
-        <Drawer.Screen 
-          name="grueneratoren/rede" 
-          options={{
-            drawerLabel: 'Politische Rede',
-            title: 'Politische Rede'
-          }}
-        />
-        <Drawer.Screen 
-          name="grueneratoren/programm" 
-          options={{
-            drawerLabel: 'Wahlprogramm',
-            title: 'Wahlprogramm'
-          }}
-        />
-        <Drawer.Screen 
-          name="grueneratoren/sharepic" 
-          options={{
-            drawerLabel: 'Sharepic Generator',
-            title: 'Sharepic Generator'
-          }}
-        />
-        <Drawer.Screen 
-          name="grueneratoren/btw-kompass" 
-          options={{
-            drawerLabel: 'Wahlprüfstein BTW',
-            title: 'Wahlprüfstein BTW'
-          }}
-        />
-        <Drawer.Screen 
-          name="grueneratoren/video-editor" 
-          options={{
-            drawerLabel: 'Video Editor',
-            title: 'Video Editor'
-          }}
-        />
-      </Drawer>
-    </GestureHandlerRootView>
+    <ScrollContextProvider>
+      <KeyboardContextProvider>
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <KeyboardAvoidingView 
+            style={{ flex: 1 }}
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 80 : 0}
+          >
+            <StackNavigator />
+          </KeyboardAvoidingView>
+        </GestureHandlerRootView>
+      </KeyboardContextProvider>
+    </ScrollContextProvider>
   );
 } 
