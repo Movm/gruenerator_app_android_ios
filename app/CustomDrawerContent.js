@@ -4,6 +4,7 @@ import { DrawerContentScrollView } from '@react-navigation/drawer';
 import { useRouter } from 'expo-router';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { menuItems } from '../config/menuItems';
+import { handleLink } from './helpers/linkHandler';
 
 const createStyles = (isDark) => StyleSheet.create({
   scrollView: {
@@ -107,8 +108,10 @@ export default function CustomDrawerContent(props) {
   const styles = createStyles(props.isDark);
 
   const navigateToWebView = (url) => {
-    router.push(url);
-    props.navigation.closeDrawer();
+    handleLink(url, { 
+      useWebView: true,
+      onClose: () => props.navigation.closeDrawer()
+    });
   };
 
   const renderGPTsSubmenu = () => {
@@ -117,14 +120,14 @@ export default function CustomDrawerContent(props) {
       <View style={styles.submenu}>
         <TouchableOpacity 
           style={styles.submenuItem}
-          onPress={() => Linking.openURL('https://chat.openai.com/g/g-ZZwx8kZS3-grunerator-social-media')}
+          onPress={() => handleLink('https://chat.openai.com/g/g-ZZwx8kZS3-grunerator-social-media')}
         >
           <MaterialCommunityIcons name="robot-outline" size={24} style={styles.submenuIcon} />
           <Text style={styles.submenuText}>Social Media GPT</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.submenuItem}
-          onPress={() => Linking.openURL('https://chatgpt.com/g/g-Npcb04iH7-grunerator-pressemitteilungen')}
+          onPress={() => handleLink('https://chatgpt.com/g/g-Npcb04iH7-grunerator-pressemitteilungen')}
         >
           <MaterialCommunityIcons name="robot-outline" size={24} style={styles.submenuIcon} />
           <Text style={styles.submenuText}>Pressemitteilung GPT</Text>

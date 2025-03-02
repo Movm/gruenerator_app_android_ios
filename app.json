@@ -12,7 +12,7 @@
     },
     "scheme": "gruenerator",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": false,
+    "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "de.gruenerator.app",
@@ -21,7 +21,11 @@
         "NSCameraUsageDescription": "Diese App benötigt Zugriff auf die Kamera für Videoaufnahmen.",
         "NSPhotoLibraryUsageDescription": "Diese App benötigt Zugriff auf deine Fotos, um Videos auszuwählen und zu bearbeiten.",
         "NSPhotoLibraryAddUsageDescription": "Diese App benötigt Zugriff auf deine Fotos, um bearbeitete Videos zu speichern.",
-        "NSMicrophoneUsageDescription": "Diese App benötigt Zugriff auf das Mikrofon für Videoaufnahmen."
+        "NSMicrophoneUsageDescription": "Diese App benötigt Zugriff auf das Mikrofon für Videoaufnahmen.",
+        "LSApplicationQueriesSchemes": [
+          "http",
+          "https"
+        ]
       }
     },
     "android": {
@@ -46,8 +50,7 @@
     },
     "plugins": [
       "expo-router",
-      "expo-font",
-      "react-native-imglysdk"
+      "expo-font"
     ],
     "experiments": {
       "typedRoutes": true

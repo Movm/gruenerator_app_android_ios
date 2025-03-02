@@ -2,11 +2,11 @@ import React from 'react';
 import { WebView } from 'react-native-webview';
 import { View, StyleSheet } from 'react-native';
 
-export default function RedeScreen() {
+export default function VorlagenScreen() {
   return (
     <View style={styles.container}>
       <WebView
-        source={{ uri: 'https://beta.gruenerator.de/rede-no-header-footer' }}
+        source={{ uri: 'https://beta.gruenerator.de/vorlagen-no-header-footer' }}
         style={styles.webview}
         cacheEnabled={true}
         domStorageEnabled={true}
