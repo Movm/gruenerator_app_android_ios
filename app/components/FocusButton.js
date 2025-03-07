@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Animated, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'react-native';
-import { useKeyboard } from '../context/KeyboardContext';
 
 export default function FocusButton({ isScrolled, onPress, style }) {
   const isDark = useColorScheme() === 'dark';
-  const { isKeyboardVisible } = useKeyboard();
+  const isKeyboardVisible = false; // Statischer Wert als Ersatz
   const buttonScaleAnim = useState(new Animated.Value(isScrolled ? 1.1 : 1))[0];
   const buttonPositionAnim = useState(new Animated.Value(isScrolled ? 64 : 0))[0];
   const buttonOpacityAnim = useState(new Animated.Value(1))[0];
