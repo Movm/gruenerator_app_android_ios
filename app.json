@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "gruenerator-app",
+    "name": "Gruenerator",
     "slug": "gruenerator-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -24,8 +24,11 @@
         "NSMicrophoneUsageDescription": "Diese App benötigt Zugriff auf das Mikrofon für Videoaufnahmen.",
         "LSApplicationQueriesSchemes": [
           "http",
+          "https",
+          "http",
           "https"
-        ]
+        ],
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {
@@ -34,7 +37,6 @@
         "backgroundColor": "#005437"
       },
       "package": "de.gruenerator.app",
-      "versionCode": 1,
       "permissions": [
         "CAMERA",
         "READ_EXTERNAL_STORAGE",
@@ -50,7 +52,59 @@
     },
     "plugins": [
       "expo-router",
-      "expo-font"
+      "expo-font",	
+      [
+        "react-native-imglysdk",
+        {
+          "android": {
+            "version": "10.9.0",
+            "kspVersion": "1.8.0-1.0.9",
+            "kotlinGradlePluginVersion": "1.8.0",
+            "modules": [
+              "ui:text",
+              "ui:focus",
+              "ui:frame",
+              "ui:brush",
+              "ui:filter",
+              "ui:sticker",
+              "ui:overlay",
+              "ui:transform",
+              "ui:adjustment",
+              "ui:text-design",
+              "ui:video-trim",
+              "ui:video-library",
+              "ui:video-composition",
+              "ui:audio-composition",
+              "ui:giphy-sticker",
+              "backend:serializer",
+              "assets:font-basic",
+              "assets:frame-basic",
+              "assets:filter-basic",
+              "assets:overlay-basic",
+              "assets:sticker-shapes",
+              "assets:sticker-emoticons",
+              "assets:sticker-animated",
+              "backend:sticker-animated",
+              "backend:sticker-smart",
+              "backend:background-removal"
+            ]
+          }
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 34,
+            "targetSdkVersion": 34,
+            "buildToolsVersion": "34.0.0",
+            "minSdkVersion": 24
+          },
+          "ios": {
+            "deploymentTarget": "15.1"
+          }
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

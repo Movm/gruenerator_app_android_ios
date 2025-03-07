@@ -51,3 +51,6 @@ export const handleLink = async (url, options = {}) => {
     await Linking.openURL(url);
   }
 }; 
+
+// Default-Export für die Route
+export default { handleLink }; 

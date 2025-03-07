@@ -1,11 +1,10 @@
 import { Stack } from 'expo-router';
-import { useColorScheme, Animated, KeyboardAvoidingView, Platform } from 'react-native';
+import { useColorScheme } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useFonts } from 'expo-font';
 import { SplashScreen } from 'expo-router';
 import { useEffect, useContext } from 'react';
 import { ScrollContextProvider, ScrollContext } from './context/ScrollContext';
-import { KeyboardContextProvider } from './context/KeyboardContext';
 
 function StackNavigator() {
   const isDark = useColorScheme() === 'dark';
@@ -75,17 +74,9 @@ export default function Layout() {
 
   return (
     <ScrollContextProvider>
-      <KeyboardContextProvider>
-        <GestureHandlerRootView style={{ flex: 1 }}>
-          <KeyboardAvoidingView 
-            style={{ flex: 1 }}
-            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-            keyboardVerticalOffset={Platform.OS === 'ios' ? 80 : 0}
-          >
-            <StackNavigator />
-          </KeyboardAvoidingView>
-        </GestureHandlerRootView>
-      </KeyboardContextProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <StackNavigator />
+      </GestureHandlerRootView>
     </ScrollContextProvider>
   );
 } 
