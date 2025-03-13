@@ -58,16 +58,13 @@
         {
           "android": {
             "version": "10.9.0",
-            "kspVersion": "1.8.0-1.0.9",
-            "kotlinGradlePluginVersion": "1.8.0",
+            "kspVersion": "1.9.0-1.0.13",
+            "kotlinGradlePluginVersion": "1.9.25",
             "modules": [
               "ui:text",
               "ui:focus",
-              "ui:frame",
               "ui:brush",
               "ui:filter",
-              "ui:sticker",
-              "ui:overlay",
               "ui:transform",
               "ui:adjustment",
               "ui:text-design",
@@ -81,11 +78,6 @@
               "assets:frame-basic",
               "assets:filter-basic",
               "assets:overlay-basic",
-              "assets:sticker-shapes",
-              "assets:sticker-emoticons",
-              "assets:sticker-animated",
-              "backend:sticker-animated",
-              "backend:sticker-smart",
               "backend:background-removal"
             ]
           }

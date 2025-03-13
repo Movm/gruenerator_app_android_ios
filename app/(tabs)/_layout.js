@@ -62,7 +62,8 @@ export default function TabLayout() {
           },
           // Füge Padding zum Inhalt hinzu, um Überlappung mit Tabs zu vermeiden
           contentStyle: {
-            paddingBottom: !isScrolled ? 65 : 0,
+            backgroundColor: theme.background,
+            paddingBottom: !isScrolled ? tabBarHeight : 0,
           },
           headerShown: false,
           tabBarShowLabel: true,

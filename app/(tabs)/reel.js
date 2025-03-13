@@ -156,14 +156,14 @@ export default function ReelScreen() {
         }}
       >
         <Tab.Screen
-          name="Reel"
-          component={WebViewScreen}
-          options={{ title: 'Reel' }}
-        />
-        <Tab.Screen
           name="Editor"
           component={EditorScreen}
           options={{ title: 'Editor' }}
+        />
+        <Tab.Screen
+          name="Reel"
+          component={WebViewScreen}
+          options={{ title: 'Untertitel' }}
         />
       </Tab.Navigator>
       <FocusButton 

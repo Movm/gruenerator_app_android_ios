@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, useWindowDimensions } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, useWindowDimensions, Modal, TextInput, Alert } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
@@ -8,6 +8,8 @@ import { handleLink } from '../helpers/linkHandler';
 export default function AboutScreen() {
   const isDark = useColorScheme() === 'dark';
   const { width } = useWindowDimensions();
+  const [modalVisible, setModalVisible] = useState(false);
+  const [reportText, setReportText] = useState('');
   
   const theme = {
     background: isDark ? '#222222' : '#ffffff',
@@ -16,6 +18,35 @@ export default function AboutScreen() {
     primaryText: isDark ? '#7FBF9E' : '#005538',
     secondary: isDark ? '#888888' : '#666666',
     divider: isDark ? '#444444' : '#e0e0e0',
+    modalBackground: isDark ? '#333333' : '#f5f5f5',
+    inputBackground: isDark ? '#444444' : '#ffffff',
+  };
+
+  // Funktion zum Öffnen des Kontaktformulars
+  const openReportForm = () => {
+    setModalVisible(true);
+  };
+
+  // Funktion zum Senden des Berichts
+  const sendReport = () => {
+    if (reportText.trim() === '') {
+      Alert.alert('Hinweis', 'Bitte gib einen Text ein.');
+      return;
+    }
+
+    // Hier würde normalerweise der API-Aufruf zum Senden des Berichts erfolgen
+    // Für jetzt verwenden wir die E-Mail-Methode als Fallback
+    const subject = 'Meldung: Unangebrachter AI-Inhalt';
+    const body = reportText;
+    const mailtoUrl = `mailto:info@moritz-waechter.de?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    Linking.openURL(mailtoUrl);
+    
+    // Modal schließen und Formular zurücksetzen
+    setModalVisible(false);
+    setReportText('');
+    
+    // Bestätigung anzeigen
+    Alert.alert('Vielen Dank', 'Deine Meldung wurde gesendet.');
   };
 
   const styles = StyleSheet.create({
@@ -108,6 +139,69 @@ export default function AboutScreen() {
       marginHorizontal: -6,
       marginTop: 4,
     },
+    centeredView: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(0,0,0,0.5)',
+    },
+    modalView: {
+      margin: 20,
+      backgroundColor: theme.modalBackground,
+      borderRadius: 12,
+      padding: 24,
+      width: '90%',
+      maxWidth: 500,
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5,
+    },
+    modalTitle: {
+      fontSize: 20,
+      fontFamily: 'GrueneType',
+      color: theme.primaryText,
+      marginBottom: 16,
+    },
+    input: {
+      height: 150,
+      borderWidth: 1,
+      borderColor: theme.divider,
+      borderRadius: 8,
+      padding: 12,
+      marginBottom: 16,
+      textAlignVertical: 'top',
+      backgroundColor: theme.inputBackground,
+      color: theme.text,
+      fontFamily: 'PTSans',
+    },
+    buttonRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    button: {
+      borderRadius: 8,
+      padding: 12,
+      elevation: 2,
+      flex: 1,
+      marginHorizontal: 4,
+      alignItems: 'center',
+    },
+    buttonCancel: {
+      backgroundColor: '#888888',
+    },
+    buttonSubmit: {
+      backgroundColor: theme.primary,
+    },
+    buttonText: {
+      color: 'white',
+      fontFamily: 'PTSans',
+      fontSize: 16,
+    },
   });
 
   return (
@@ -164,7 +258,48 @@ export default function AboutScreen() {
         >
           <Text style={styles.footerText}>Datenschutz</Text>
         </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.footerLink}
+          onPress={openReportForm}
+        >
+          <Text style={styles.footerText}>Inhalt melden</Text>
+        </TouchableOpacity>
       </View>
+
+      <Modal
+        animationType="fade"
+        transparent={true}
+        visible={modalVisible}
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <Text style={styles.modalTitle}>Unangebrachten AI-Inhalt melden</Text>
+            <TextInput
+              style={styles.input}
+              multiline
+              placeholder="Bitte füge hier den unangebrachten Inhalt ein..."
+              placeholderTextColor={theme.secondary}
+              value={reportText}
+              onChangeText={setReportText}
+            />
+            <View style={styles.buttonRow}>
+              <TouchableOpacity
+                style={[styles.button, styles.buttonCancel]}
+                onPress={() => setModalVisible(false)}
+              >
+                <Text style={styles.buttonText}>Abbrechen</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, styles.buttonSubmit]}
+                onPress={sendReport}
+              >
+                <Text style={styles.buttonText}>Senden</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </ScrollView>
   );
 } 
