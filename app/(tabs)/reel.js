@@ -1,12 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { View, StyleSheet, useColorScheme, Animated } from 'react-native';
+import { View, StyleSheet, useColorScheme, Animated, Text } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import * as NavigationBar from 'expo-navigation-bar';
 import { ScrollContext } from '../context/ScrollContext';
-import VideoEditorComponent from '../components/VideoEditorComponent';
 import FocusButton from '../components/FocusButton';
 
 const Tab = createMaterialTopTabNavigator();
@@ -27,7 +26,32 @@ function WebViewScreen() {
 }
 
 function EditorScreen() {
-  return <VideoEditorComponent />;
+  const colorScheme = useColorScheme();
+  const isDark = colorScheme === 'dark';
+  
+  const colors = {
+    light: {
+      background: '#ffffff',
+      text: '#005538',
+    },
+    dark: {
+      background: '#222222',
+      text: '#f3faf6',
+    }
+  };
+
+  const theme = isDark ? colors.dark : colors.light;
+  
+  return (
+    <View style={[styles.placeholderContainer, { backgroundColor: theme.background }]}>
+      <Text style={[styles.placeholderText, { color: theme.text }]}>
+        Video Editor
+      </Text>
+      <Text style={[styles.placeholderSubtext, { color: theme.text }]}>
+        Coming soon
+      </Text>
+    </View>
+  );
 }
 
 export default function ReelScreen() {
@@ -181,5 +205,20 @@ const styles = StyleSheet.create({
   },
   webview: {
     flex: 1,
+  },
+  placeholderContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  placeholderText: {
+    fontSize: 24,
+    fontFamily: 'GrueneType',
+    marginBottom: 8,
+  },
+  placeholderSubtext: {
+    fontSize: 16,
+    fontFamily: 'PTSans',
+    opacity: 0.6,
   },
 }); 

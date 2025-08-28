@@ -11,8 +11,8 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "target": "esnext",
-    "module": "commonjs",
-    "moduleResolution": "node"
+    "module": "es2015",
+    "moduleResolution": "bundler"
   },
   "include": [
     "**/*.ts",

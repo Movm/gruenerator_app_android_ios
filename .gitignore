@@ -80,3 +80,30 @@ yarn-error.*
 *.tsbuildinfo
 
 # @end expo-cli
+
+# Build artifacts
+*.apk
+*.aab
+*.ipa
+
+# Development files  
+.claude/
+SESSION_SUMMARY.md
+get_network_local_ip.js
+
+# Build scripts
+scripts/build-android.sh
+
+# ESLint config
+eslint.config.js
+
+# Android build artifacts
+android/app/build/
+android/build/
+android/app/debug.keystore
+
+# iOS build artifacts  
+ios/build/
+ios/Pods/
+*.xcworkspace
+*.xcuserdata

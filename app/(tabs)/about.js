@@ -4,12 +4,14 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useColorScheme } from 'react-native';
 import * as WebBrowser from 'expo-web-browser';
 import { handleLink } from '../helpers/linkHandler';
+import { useAuth } from '../../contexts/AuthContext';
 
 export default function AboutScreen() {
   const isDark = useColorScheme() === 'dark';
   const { width } = useWindowDimensions();
   const [modalVisible, setModalVisible] = useState(false);
   const [reportText, setReportText] = useState('');
+  const { user, logout } = useAuth();
   
   const theme = {
     background: isDark ? '#222222' : '#ffffff',
@@ -47,6 +49,25 @@ export default function AboutScreen() {
     
     // Bestätigung anzeigen
     Alert.alert('Vielen Dank', 'Deine Meldung wurde gesendet.');
+  };
+
+  // Funktion zum Logout
+  const handleLogout = () => {
+    Alert.alert(
+      'Logout',
+      'Möchtest du dich wirklich abmelden?',
+      [
+        {
+          text: 'Abbrechen',
+          style: 'cancel',
+        },
+        {
+          text: 'Abmelden',
+          style: 'destructive',
+          onPress: logout,
+        },
+      ]
+    );
   };
 
   const styles = StyleSheet.create({
@@ -206,6 +227,25 @@ export default function AboutScreen() {
 
   return (
     <ScrollView style={styles.container}>
+      {/* User Info Section */}
+      {user && (
+        <View style={styles.section}>
+          <Text style={styles.title}>Angemeldet als</Text>
+          <Text style={styles.text}>
+            {user.name || user.email || 'Benutzer'}
+          </Text>
+          <TouchableOpacity 
+            style={[styles.link, { backgroundColor: '#dc3545' }]}
+            onPress={handleLogout}
+          >
+            <MaterialCommunityIcons name="logout" size={24} color="#ffffff" />
+            <Text style={styles.linkText}>Abmelden</Text>
+          </TouchableOpacity>
+        </View>
+      )}
+
+      <View style={styles.divider} />
+
       <View style={styles.section}>
         <Text style={styles.title}>Der Grünerator</Text>
         <Text style={styles.text}>
